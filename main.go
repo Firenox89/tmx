@@ -350,7 +350,7 @@ func (l *Layer) TileDefs(tss []TileSet) (tds []*TileDef, err error) {
 
 	sort.Sort(byFirstGlobalID(tss))
 
-	for _, tgr := range tgrs {
+	for index, tgr := range tgrs {
 		bid := tgr.GlobalID.BareID()
 
 		if bid == 0 {
@@ -364,7 +364,7 @@ func (l *Layer) TileDefs(tss []TileSet) (tds []*TileDef, err error) {
 				break
 			}
 
-			ts = &t
+			ts = &tss[index]
 		}
 
 		// if we never found a tileset, the file is invalid; return an error that
