@@ -350,7 +350,7 @@ func (l *Layer) TileDefs(tss []TileSet) (tds []*TileDef, err error) {
 
 	sort.Sort(byFirstGlobalID(tss))
 
-	for index, tgr := range tgrs {
+	for _, tgr := range tgrs {
 		bid := tgr.GlobalID.BareID()
 
 		if bid == 0 {
@@ -359,7 +359,7 @@ func (l *Layer) TileDefs(tss []TileSet) (tds []*TileDef, err error) {
 		}
 
 		var ts *TileSet
-		for _, t := range tss {
+		for index, t := range tss {
 			if bid < uint32(t.FirstGlobalID) {
 				break
 			}
